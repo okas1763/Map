@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(624, 594)
+        Dialog.resize(630, 594)
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(parent=Dialog)
         self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(460, 460, 161, 131))
         self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")

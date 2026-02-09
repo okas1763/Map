@@ -2,15 +2,11 @@ import os
 import sys
 import requests
 from ui import Ui_Dialog
-# from params import Params
+from params import Params, GeocodeParams, StaticParams
 from PyQt6.QtWidgets import (
     QApplication,
     QMainWindow,
-    QLabel,
-    QWidget,
-    QVBoxLayout,
 )
-from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap
 
 WINDOW_WIDTH = 720
@@ -23,18 +19,10 @@ x_cord = float(input("Введите х "))
 y_cord = float(input("Введите у "))
 
 
-class MapWindow(QMainWindow, Ui_Dialog):
+class MapWindow(QMainWindow, Ui_Dialog, GeocodeParams, StaticParams):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.setWindowTitle(WINDOW_TITLE)
-        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
-
-        central = QWidget()
-        self.setCentralWidget(central)
-        layout = QVBoxLayout(central)
-        layout.setContentsMargins(0, 0, 0, 0)
-        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.load_map()
 
     def load_map(self):

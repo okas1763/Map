@@ -21,6 +21,12 @@ class Params:
     
     def get_params(self):
         return self.params
+
+class GeocodeParams:
+    pass
+
+class StaticParams:
+    pass
     
     def dict2str(self):
         return "&".join([f"{key}={value}" for key, value in self.params.items()])
