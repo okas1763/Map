@@ -1,2 +1,2 @@
-arcade
+PyQt6
 requests
