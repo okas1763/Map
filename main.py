@@ -1,6 +1,8 @@
 import os
 import sys
 import requests
+from ui import Ui_Dialog
+# from params import Params
 from PyQt6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -21,9 +23,10 @@ x_cord = float(input("Введите х "))
 y_cord = float(input("Введите у "))
 
 
-class MapWindow(QMainWindow):
+class MapWindow(QMainWindow, Ui_Dialog):
     def __init__(self):
         super().__init__()
+        self.setupUi(self)
         self.setWindowTitle(WINDOW_TITLE)
         self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
 
@@ -32,12 +35,6 @@ class MapWindow(QMainWindow):
         layout = QVBoxLayout(central)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.label = QLabel()
-        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.label.setScaledContents(False)
-        layout.addWidget(self.label)
-
         self.load_map()
 
     def load_map(self):
