@@ -1,0 +1,2 @@
+API_KEY_GEOCODE = ""
+API_KEY_STATIC = ""
