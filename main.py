@@ -1,22 +1,19 @@
 import os
 import sys
 import requests
-from ui import Ui_Dialog
 from PyQt6.QtWidgets import (
     QApplication,
     QMainWindow,
 )
 from PyQt6.QtGui import QPixmap
+from ui import Ui_Dialog
+from params import main_config
+
 
 WINDOW_WIDTH = 720
 WINDOW_HEIGHT = 720
 WINDOW_TITLE = "MAP"
 MAP_FILE = "map.png"
-
-num = 0.2
-x_cord = 39.736096
-y_cord = 52.043386
-
 
 class MapWindow(QMainWindow, Ui_Dialog):
     def __init__(self):
@@ -30,7 +27,7 @@ class MapWindow(QMainWindow, Ui_Dialog):
     def load_map(self):
         server_address = "https://static-maps.yandex.ru/v1?"
         api_key = "f3a0fe3a-b07e-4840-a1da-06f18b2ddf13"
-        ll_spn = f"ll={x_cord},{y_cord}&spn={num},{num}"
+        ll_spn = f"ll={main_config["lattit_x"]},{main_config["lattit_y"]}&spn={main_config["zoom"]},{main_config["zoom"]}"
         map_request = f"{server_address}{ll_spn}&apikey={api_key}"
         response = requests.get(map_request)
 
