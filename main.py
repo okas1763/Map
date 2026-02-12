@@ -9,7 +9,7 @@ from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt
 from ui import Ui_Dialog
 from params import main_config
-from defs import minus_spn, plus_spn
+from defs import minus_spn, plus_spn, minus_x, plus_x
 
 
 WINDOW_WIDTH = 720
@@ -29,7 +29,7 @@ class MapWindow(QMainWindow, Ui_Dialog):
     def load_map(self):
         server_address = "https://static-maps.yandex.ru/v1?"
         api_key = main_config["static_api"]
-        ll_spn = f"ll={main_config["lattit_x"]},{main_config["lattit_y"]}&spn={main_config["spn"]},{main_config["spn"]}"
+        ll_spn = f"ll={main_config["x"]},{main_config["y"]}&spn={main_config["spn"]},{main_config["spn"]}"
         map_request = f"{server_address}{ll_spn}&apikey={api_key}"
         response = requests.get(map_request)
 
@@ -55,6 +55,13 @@ class MapWindow(QMainWindow, Ui_Dialog):
         if event.key() == Qt.Key.Key_PageUp:
             plus_spn()
             self.load_map()
+        if event.key() == Qt.Key.Key_Left:
+            minus_x()
+            self.load_map()
+        if event.key() == Qt.Key.Key_Right:
+            plus_x()
+            self.load_map()
+
 
 def main():
     app = QApplication(sys.argv)

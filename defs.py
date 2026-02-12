@@ -7,3 +7,11 @@ def minus_spn():
 
 def plus_spn():
     main_config["spn"] = main_config["spn"] + 0.1
+
+
+def minus_x():
+    main_config["x"] = main_config["x"] - main_config["spn"] / 2
+
+
+def plus_x():
+    main_config["x"] = main_config["x"] + main_config["spn"] / 2
