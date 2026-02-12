@@ -14,9 +14,9 @@ WINDOW_HEIGHT = 720
 WINDOW_TITLE = "MAP"
 MAP_FILE = "map.png"
 
-num = float(input("Введите масштаб "))
-x_cord = float(input("Введите х "))
-y_cord = float(input("Введите у "))
+num = 25
+x_cord = 52.054593
+y_cord = 39.563842
 
 
 class MapWindow(QMainWindow, Ui_Dialog, GeocodeParams, StaticParams):
