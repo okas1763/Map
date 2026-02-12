@@ -1,45 +1,8 @@
-from api import API_KEY_GEOCODE, API_KEY_STATIC
 
-class Params:
-    def __init__(self, params: dict):
-        self.params = dict()
-        self.default_geocode_params = dict()
-        self.add_params(params)
-    
-    def add_params(self, params: dict):
-        for key, val in params.items():
-            self.params[key] = val
-    
-    def del_key(self, key):
-        try:
-            del self.params[key]
-        except KeyError:
-            pass
-    
-    def clear(self):
-        self.params.clear()
-    
-    def get_params(self):
-        return self.params
-
-class GeocodeParams:
-    pass
-
-class StaticParams:
-    pass
-    
-    def dict2str(self):
-        return "&".join([f"{key}={value}" for key, value in self.params.items()])
-    
-    
-class GeocodeParams(Params):
-    def __init__(self, params):
-        super().__init__(params)
-        self.add_params({"apikey": API_KEY_GEOCODE})
-
-
-class StaticParams(Params):
-    def __init__(self, params):
-        super().__init__(params)
-        self.add_params({"apikey": API_KEY_STATIC})
-        
+main_config = {
+    "lattit_x": "39.736096",
+    "lattit_y": "52.043386",
+    "zoom": "0.2",
+    "geocode_api": "f11ef65b-3f92-4217-8e1f-74de2efdf054",
+    "static_api": "5ca17ec5-2941-4dc2-9faf-254530ca06e6",
+}
