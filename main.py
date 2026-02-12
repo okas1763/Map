@@ -6,8 +6,10 @@ from PyQt6.QtWidgets import (
     QMainWindow,
 )
 from PyQt6.QtGui import QPixmap
+from PyQt6.QtCore import Qt
 from ui import Ui_Dialog
 from params import main_config
+from defs import minus_spn, plus_spn
 
 
 WINDOW_WIDTH = 720
@@ -45,6 +47,14 @@ class MapWindow(QMainWindow, Ui_Dialog):
 
     def search(self):
         pass
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key.Key_PageDown:
+            minus_spn()
+            self.load_map()
+        if event.key() == Qt.Key.Key_PageUp:
+            plus_spn()
+            self.load_map()
 
 def main():
     app = QApplication(sys.argv)
