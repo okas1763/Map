@@ -2,7 +2,6 @@ import os
 import sys
 import requests
 from ui import Ui_Dialog
-from params import Params, GeocodeParams, StaticParams
 from PyQt6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -14,16 +13,19 @@ WINDOW_HEIGHT = 720
 WINDOW_TITLE = "MAP"
 MAP_FILE = "map.png"
 
-num = 25
-x_cord = 52.054593
-y_cord = 39.563842
+num = 0.2
+x_cord = 39.736096
+y_cord = 52.043386
 
 
-class MapWindow(QMainWindow, Ui_Dialog, GeocodeParams, StaticParams):
+class MapWindow(QMainWindow, Ui_Dialog):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.load_map()
+
+    def InitUi(self):
+        pass
 
     def load_map(self):
         server_address = "https://static-maps.yandex.ru/v1?"
@@ -44,6 +46,8 @@ class MapWindow(QMainWindow, Ui_Dialog, GeocodeParams, StaticParams):
         pixmap = QPixmap(MAP_FILE)
         self.label.setPixmap(pixmap)
 
+    def search(self):
+        pass
 
 def main():
     app = QApplication(sys.argv)
