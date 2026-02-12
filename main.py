@@ -28,8 +28,8 @@ class MapWindow(QMainWindow, Ui_Dialog):
 
     def load_map(self):
         server_address = "https://static-maps.yandex.ru/v1?"
-        api_key = "f3a0fe3a-b07e-4840-a1da-06f18b2ddf13"
-        ll_spn = f"ll={main_config["lattit_x"]},{main_config["lattit_y"]}&spn={main_config["zoom"]},{main_config["zoom"]}"
+        api_key = main_config["static_api"]
+        ll_spn = f"ll={main_config["lattit_x"]},{main_config["lattit_y"]}&spn={main_config["spn"]},{main_config["spn"]}"
         map_request = f"{server_address}{ll_spn}&apikey={api_key}"
         response = requests.get(map_request)
 
